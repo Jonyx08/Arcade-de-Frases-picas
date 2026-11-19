@@ -76,9 +76,9 @@ export async function initDatabase(): Promise<Database> {
     try {
       const uInt8Array = base64ToUint8Array(savedData);
       dbInstance = new SQL.Database(uInt8Array);
-      console.log('🎮 [SQLite] Base de datos restaurada con éxito desde localStorage.');
+      console.log('[SQLite] Base de datos restaurada con exito desde localStorage.');
     } catch (err) {
-      console.warn('⚠️ [SQLite] Error restaurando localStorage. Creando base de datos limpia:', err);
+      console.warn('[SQLite] Error restaurando localStorage. Creando base de datos limpia:', err);
       dbInstance = new SQL.Database();
       setupSchemaAndSeed(dbInstance);
       saveDatabase();
@@ -87,7 +87,7 @@ export async function initDatabase(): Promise<Database> {
     dbInstance = new SQL.Database();
     setupSchemaAndSeed(dbInstance);
     saveDatabase();
-    console.log('🎮 [SQLite] Base de datos creada e inicializada con frases semilla.');
+    console.log('[SQLite] Base de datos creada e inicializada con frases semilla.');
   }
 
   return dbInstance;

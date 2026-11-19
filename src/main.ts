@@ -12,8 +12,7 @@ async function bootstrap() {
   // Pantalla de carga mientras se inicializa el motor SQLite WebAssembly
   appElement.innerHTML = `
     <div style="min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem; font-family: 'Press Start 2P', monospace; color: #00f3ff; text-align: center; padding: 1rem;">
-      <div style="font-size: 3rem; animation: pulse 1s infinite;">👾</div>
-      <div style="font-size: 1.1rem; text-shadow: 0 0 10px #00f3ff;">CARGANDO SQLITE (SQL.JS WASM)...</div>
+      <div style="font-size: 1.1rem; text-shadow: 0 0 10px #00f3ff; letter-spacing: 2px;">CARGANDO SQLITE (SQL.JS WASM)...</div>
       <div style="font-family: 'Outfit', sans-serif; color: #8b9bb4; font-size: 0.95rem;">Preparando base de datos y persistencia...</div>
     </div>
   `;
@@ -27,9 +26,9 @@ async function bootstrap() {
     const controller = new FraseController(view);
     controller.init();
 
-    console.log('🚀 [Arcade] Base de datos y aplicación listas.');
+    console.log('[Arcade] Base de datos y aplicacion listas.');
   } catch (error) {
-    console.error('❌ Error al inicializar SQLite:', error);
+    console.error('[Error] Fallo al inicializar SQLite:', error);
     appElement.innerHTML = `
       <div style="min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; color: #ff4757; text-align: center; padding: 2rem; font-family: sans-serif;">
         <h2 style="font-size: 1.5rem;">Error al inicializar la base de datos SQLite</h2>

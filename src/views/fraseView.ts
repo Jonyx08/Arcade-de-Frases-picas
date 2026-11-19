@@ -8,7 +8,7 @@ export class FraseView {
   }
 
   /**
-   * Renderiza la estructura base del arcade
+   * Renderiza la estructura base del arcade con iconografia limpia
    */
   public renderShell(): void {
     this.root.innerHTML = `
@@ -21,34 +21,30 @@ export class FraseView {
           </div>
           <h1 class="arcade-title">ARCADE DE FRASES ÉPICAS</h1>
           <p class="arcade-subtitle">
-            Base de datos SQLite localmente persistida con las citas más legendarias de videojuegos, cine, anime y memes. ¡Vota por tus favoritas o añade las tuyas!
+            Base de datos SQLite localmente persistida con las citas más legendarias de videojuegos, cine, anime y cultura digital.
           </p>
 
           <!-- STATS RIBBON -->
           <div class="stats-ribbon" id="stats-ribbon">
             <div class="stat-item">
-              <span class="stat-icon">🕹️</span>
               <div class="stat-info">
                 <span class="stat-label">Total Frases</span>
                 <span class="stat-value" id="stat-total">0</span>
               </div>
             </div>
             <div class="stat-item">
-              <span class="stat-icon">⭐</span>
               <div class="stat-info">
                 <span class="stat-label">Votos Registrados</span>
                 <span class="stat-value" id="stat-votos">0</span>
               </div>
             </div>
             <div class="stat-item">
-              <span class="stat-icon">👑</span>
               <div class="stat-info">
                 <span class="stat-label">Categoría Líder</span>
                 <span class="stat-value" id="stat-categoria">-</span>
               </div>
             </div>
             <div class="stat-item">
-              <span class="stat-icon">💾</span>
               <div class="stat-info">
                 <span class="stat-label">Persistencia</span>
                 <span class="stat-value" style="color: var(--neon-green);">ACTIVA</span>
@@ -59,7 +55,7 @@ export class FraseView {
 
         <!-- HALL OF FAME / TOP PODIUM -->
         <section class="hall-of-fame">
-          <h2 class="section-title">🏆 Salón de la Fama • Top 3 Más Votadas</h2>
+          <h2 class="section-title">Salón de la Fama • Top 3 Más Votadas</h2>
           <div class="podium-grid" id="podium-grid">
             <!-- Inyectado dinámicamente -->
           </div>
@@ -69,7 +65,12 @@ export class FraseView {
         <section class="controls-bar">
           <div class="controls-row-top">
             <div class="search-box">
-              <span class="search-icon">🔍</span>
+              <span class="search-icon">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+              </span>
               <input 
                 type="text" 
                 id="search-input" 
@@ -79,11 +80,20 @@ export class FraseView {
               />
             </div>
             <div class="controls-actions">
-              <button id="btn-reset-seeds" class="btn-secondary" title="Reinicia la BD a sus frases originales">
-                🔄 Restaurar Semillas
+              <button id="btn-reset-seeds" class="btn-secondary" title="Reinicia la BD a sus frases iniciales">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="1 4 1 10 7 10"></polyline>
+                  <polyline points="23 20 23 14 17 14"></polyline>
+                  <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"></path>
+                </svg>
+                Restaurar Semillas
               </button>
               <button id="btn-open-create" class="btn-primary">
-                + NUEVA FRASE
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                NUEVA FRASE
               </button>
             </div>
           </div>
@@ -91,17 +101,17 @@ export class FraseView {
           <div class="controls-row-bottom">
             <div class="category-pills" id="category-pills">
               <button class="pill-btn active" data-category="todas">Todas</button>
-              <button class="pill-btn" data-category="Videojuegos">🎮 Videojuegos</button>
-              <button class="pill-btn" data-category="Cine">🎬 Cine</button>
-              <button class="pill-btn" data-category="Anime">⛩️ Anime</button>
-              <button class="pill-btn" data-category="Memes">🐸 Memes</button>
+              <button class="pill-btn" data-category="Videojuegos">Videojuegos</button>
+              <button class="pill-btn" data-category="Cine">Cine</button>
+              <button class="pill-btn" data-category="Anime">Anime</button>
+              <button class="pill-btn" data-category="Memes">Memes</button>
             </div>
 
             <div class="sort-box">
               <select id="sort-select" class="sort-select">
-                <option value="votos">🔥 Más Votadas</option>
-                <option value="recientes">⏱️ Más Recientes</option>
-                <option value="alfabetico">🔤 Alfabético</option>
+                <option value="votos">Más Votadas</option>
+                <option value="recientes">Más Recientes</option>
+                <option value="alfabetico">Alfabético</option>
               </select>
             </div>
           </div>
@@ -132,7 +142,7 @@ export class FraseView {
       <div class="modal-overlay" id="frase-modal">
         <div class="modal-content">
           <div class="modal-header">
-            <h3 class="modal-title" id="modal-title">👾 NUEVA FRASE ÉPICA</h3>
+            <h3 class="modal-title" id="modal-title">NUEVA FRASE ÉPICA</h3>
             <button class="btn-close" id="btn-close-modal">&times;</button>
           </div>
           <form id="frase-form">
@@ -174,26 +184,22 @@ export class FraseView {
             <div class="form-group">
               <label class="form-label" for="form-categoria">Categoría *</label>
               <select id="form-categoria" class="form-control" required>
-                <option value="Videojuegos">🎮 Videojuegos</option>
-                <option value="Cine">🎬 Cine</option>
-                <option value="Anime">⛩️ Anime</option>
-                <option value="Memes">🐸 Memes</option>
+                <option value="Videojuegos">Videojuegos</option>
+                <option value="Cine">Cine</option>
+                <option value="Anime">Anime</option>
+                <option value="Memes">Memes</option>
               </select>
             </div>
 
             <div class="form-group">
-              <label class="form-label">Icono Temático</label>
+              <label class="form-label">Insignia Temática</label>
               <div class="emoji-picker" id="emoji-picker">
                 <button type="button" class="emoji-btn selected" data-emoji="🗡️">🗡️</button>
-                <button type="button" class="emoji-btn" data-emoji="👾">👾</button>
+                <button type="button" class="emoji-btn" data-emoji="🕹️">🕹️</button>
                 <button type="button" class="emoji-btn" data-emoji="🕶️">🕶️</button>
                 <button type="button" class="emoji-btn" data-emoji="✨">✨</button>
                 <button type="button" class="emoji-btn" data-emoji="🥋">🥋</button>
-                <button type="button" class="emoji-btn" data-emoji="🐛">🐛</button>
-                <button type="button" class="emoji-btn" data-emoji="🎂">🎂</button>
-                <button type="button" class="emoji-btn" data-emoji="🤖">🤖</button>
-                <button type="button" class="emoji-btn" data-emoji="👑">👑</button>
-                <button type="button" class="emoji-btn" data-emoji="💥">💥</button>
+                <button type="button" class="emoji-btn" data-emoji="💻">💻</button>
               </div>
               <input type="hidden" id="form-icono" value="🗡️" />
             </div>
@@ -212,7 +218,7 @@ export class FraseView {
   }
 
   /**
-   * Actualiza el contador del listón de estadísticas
+   * Actualiza el listón de estadísticas
    */
   public renderStats(stats: { total: number; totalVotos: number; topCategoria: string }): void {
     const totalEl = document.getElementById('stat-total');
@@ -232,11 +238,11 @@ export class FraseView {
     if (!container) return;
 
     if (frases.length === 0) {
-      container.innerHTML = `<div class="empty-desc" style="grid-column: 1 / -1; text-align: center;">No hay frases suficientes para el podio.</div>`;
+      container.innerHTML = `<div class="empty-desc" style="grid-column: 1 / -1; text-align: center;">No hay frases registradas aún.</div>`;
       return;
     }
 
-    const rankLabels = ['1ST PLACE 🥇', '2ND PLACE 🥈', '3RD PLACE 🥉'];
+    const rankLabels = ['1ST PLACE', '2ND PLACE', '3RD PLACE'];
 
     container.innerHTML = frases.map((f, index) => `
       <div class="podium-card rank-${index + 1}">
@@ -244,13 +250,13 @@ export class FraseView {
         <div class="card-body" style="margin-top: 0.5rem;">
           <div class="card-quote" style="font-size: 1rem;">${this.escapeHtml(f.frase)}</div>
           <div class="card-meta">
-            <span class="card-author">${f.icono} ${this.escapeHtml(f.autor)}</span>
+            <span class="card-author">${this.escapeHtml(f.autor)}</span>
             <span class="card-origin">${this.escapeHtml(f.origen)}</span>
           </div>
         </div>
         <div class="card-footer" style="padding-top: 0.8rem;">
           <span class="category-tag ${this.getCategoryClass(f.categoria)}">${f.categoria}</span>
-          <span style="font-family: var(--font-retro); font-size: 0.8rem; color: var(--neon-yellow);">⭐ ${f.votos} pts</span>
+          <span style="font-family: var(--font-retro); font-size: 0.75rem; color: var(--neon-yellow);">${f.votos} PTS</span>
         </div>
       </div>
     `).join('');
@@ -266,9 +272,8 @@ export class FraseView {
     if (frases.length === 0) {
       grid.innerHTML = `
         <div class="empty-state">
-          <div class="empty-icon">👾</div>
-          <h3 class="empty-title">¡GAME OVER! NO HAY RESULTADOS</h3>
-          <p class="empty-desc">No se encontraron frases con los filtros aplicados. ¡Intenta con otra búsqueda o añade una nueva frase!</p>
+          <h3 class="empty-title">SIN RESULTADOS</h3>
+          <p class="empty-desc">No se encontraron frases con los filtros seleccionados.</p>
         </div>
       `;
       return;
@@ -280,7 +285,7 @@ export class FraseView {
           <span class="category-tag ${this.getCategoryClass(f.categoria)}">
             ${f.categoria}
           </span>
-          <span class="card-icon" title="Icono temático">${f.icono}</span>
+          <span class="card-icon" title="Insignia">${f.icono || '•'}</span>
         </div>
 
         <div class="card-body">
@@ -299,11 +304,17 @@ export class FraseView {
           </div>
 
           <div class="card-actions">
-            <button class="btn-icon edit-btn" data-id="${f.id}" title="Editar registro en SQLite">
-              ✏️
+            <button class="btn-icon edit-btn" data-id="${f.id}" title="Editar registro">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+              </svg>
             </button>
-            <button class="btn-icon delete-btn" data-id="${f.id}" title="Eliminar de SQLite">
-              🗑️
+            <button class="btn-icon delete-btn" data-id="${f.id}" title="Eliminar registro">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="3 6 5 6 21 6"></polyline>
+                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+              </svg>
             </button>
           </div>
         </div>
@@ -327,7 +338,7 @@ export class FraseView {
     if (!modal) return;
 
     if (modo === 'editar' && frase) {
-      if (title) title.textContent = '✏️ EDITAR FRASE ÉPICA';
+      if (title) title.textContent = 'EDITAR FRASE';
       if (formId) formId.value = frase.id.toString();
       if (formFrase) formFrase.value = frase.frase;
       if (formAutor) formAutor.value = frase.autor;
@@ -336,7 +347,7 @@ export class FraseView {
       if (formIcono) formIcono.value = frase.icono;
       this.setSelectedEmoji(frase.icono);
     } else {
-      if (title) title.textContent = '👾 NUEVA FRASE ÉPICA';
+      if (title) title.textContent = 'NUEVA FRASE ÉPICA';
       if (formId) formId.value = '';
       if (formFrase) formFrase.value = '';
       if (formAutor) formAutor.value = '';
@@ -370,7 +381,7 @@ export class FraseView {
   }
 
   /**
-   * Muestra un toast notification retro
+   * Muestra notificaciones limpias con iconos SVG estructurados
    */
   public showToast(mensaje: string, tipo: 'success' | 'info' | 'error' = 'info'): void {
     const container = document.getElementById('toast-container');
@@ -379,11 +390,16 @@ export class FraseView {
     const toast = document.createElement('div');
     toast.className = `toast ${tipo}`;
     
-    let icon = 'ℹ️';
-    if (tipo === 'success') icon = '✅';
-    if (tipo === 'error') icon = '❌';
+    let iconSvg = '';
+    if (tipo === 'success') {
+      iconSvg = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
+    } else if (tipo === 'error') {
+      iconSvg = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>`;
+    } else {
+      iconSvg = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>`;
+    }
 
-    toast.innerHTML = `<span>${icon}</span> <span>${this.escapeHtml(mensaje)}</span>`;
+    toast.innerHTML = `<span class="toast-icon">${iconSvg}</span> <span>${this.escapeHtml(mensaje)}</span>`;
     container.appendChild(toast);
 
     setTimeout(() => {

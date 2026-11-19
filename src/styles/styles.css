@@ -556,6 +556,9 @@ body {
 }
 
 .btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background: transparent;
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
@@ -564,6 +567,12 @@ body {
   cursor: pointer;
   font-size: 0.85rem;
   transition: all 0.15s ease;
+}
+
+.toast-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn-icon:hover.edit-btn {

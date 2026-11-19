@@ -1,82 +1,84 @@
-# 👾 Arcade de Frases Épicas • SQLite en el Navegador
+# Arcade de Frases Epicas - SQLite en el Navegador
 
 [![Vite](https://img.shields.io/badge/Vite-6.x-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![SQLite](https://img.shields.io/badge/SQLite-sql.js_WASM-003B57?logo=sqlite&logoColor=white)](https://sql.js.org/)
 [![pnpm](https://img.shields.io/badge/pnpm-12.x-F69220?logo=pnpm&logoColor=white)](https://pnpm.io/)
-[![Vercel](https://img.shields.io/badge/Vercel-Deployed-000000?logo=vercel&logoColor=white)](https://vercel.com/)
+[![Vercel](https://img.shields.io/badge/Vercel-Deployed-000000?logo=vercel&logoColor=white)](https://arcade-de-frases-picas.vercel.app)
 
-Un sitio web interactivo y creativo con temática **Retro Arcade** que permite a los usuarios descubrir, registrar, editar, votar y gestionar citas legendarias de videojuegos, cine, anime y cultura de internet. 
+Sitio web interactivo con tematica Retro Arcade que permite a los usuarios descubrir, registrar, editar, votar y gestionar citas celebres de videojuegos, cine, anime y cultura digital.
 
-La aplicación utiliza un motor **SQLite real en el navegador** impulsado por WebAssembly (`sql.js`), con persistencia de estado en `localStorage`.
+La aplicacion utiliza un motor SQLite real en el navegador impulsado por WebAssembly (sql.js), con persistencia de datos en localStorage.
 
 ---
 
-## 🔗 Enlaces del Proyecto
+## Enlaces del Proyecto
 
+* **URL de Despliegue en Vercel:** [https://arcade-de-frases-picas.vercel.app](https://arcade-de-frases-picas.vercel.app)
 * **Repositorio de GitHub:** [https://github.com/Jonyx08/Arcade-de-Frases-picas](https://github.com/Jonyx08/Arcade-de-Frases-picas)
-* **URL de Despliegue en Vercel:** *(Vinculada al repositorio público)*
 
 ---
 
-## 🌟 Características Principales
+## Caracteristicas Principales
 
-* 💾 **Base de Datos SQLite Real:** Tabla `frases` creada y administrada directamente en SQLite mediante consultas SQL estándar (`CREATE TABLE`, `INSERT`, `SELECT`, `UPDATE`, `DELETE`).
-* 🔄 **Persistencia entre Sesiones:** Los datos exportados por SQLite (`db.export()`) se preservan en `localStorage` en formato codificado. Al recargar la página, la base de datos se restaura automáticamente con todas tus modificaciones.
-* ⚡ **CRUD Completo:**
-  * **[C] Crear:** Formulario modal para registrar frases legendarias con autor, origen, categoría e icono temático.
-  * **[R] Leer:** Visualización en cuadrícula con filtros en tiempo real por categoría (*Videojuegos, Cine, Anime, Memes*), buscador instantáneo y selector de orden (*Más Votadas, Recientes, Alfabético*).
-  * **[U] Actualizar:** Modificación completa de campos de la frase y sistema de votos (+1 / -1) reflejados en SQLite.
-  * **[D] Eliminar:** Borrado seguro de registros con confirmación previa.
-* 🏆 **Salón de la Fama (Hall of Fame):** Podio visual en tiempo real que premia las 3 frases más votadas con medallas de oro, plata y bronce.
-* 🎨 **Diseño Creativo y Original:** Estética neón cyberpunk/arcade retro con fuentes pixeladas, efectos de resplandor, microinteracciones, animaciones y diseño totalmente adaptativo para dispositivos móviles y escritorio.
-* 🔄 **Restauración de Semillas:** Botón de un solo clic para resetear los datos a las frases legendarias preconfiguradas.
-
----
-
-## 🛠️ Tecnologías Utilizadas
-
-* **Vite 6** como entorno de desarrollo rápido y bundler.
-* **TypeScript 5** para tipado estricto y seguridad en el código.
-* **SQL.js (WebAssembly)** para ejecutar SQLite completo dentro del navegador cliente sin necesidad de servidores pesados.
-* **CSS3 Moderno** (variables CSS, glassmorphism, flexbox, grid, animaciones neon).
-* **pnpm** como gestor de paquetes optimizado.
-* **Vercel** para despliegue y alojamiento en la nube.
+* **Base de Datos SQLite Real:** Tabla `frases` creada y administrada directamente en SQLite mediante sentencias SQL estandar (`CREATE TABLE`, `INSERT`, `SELECT`, `UPDATE`, `DELETE`).
+* **Persistencia entre Sesiones:** El binario exportado por SQLite (`db.export()`) se almacena codificado en `localStorage`. Al recargar la pagina, el estado completo de la base de datos se restaura de forma automatica.
+* **Operaciones CRUD:**
+  * **Crear:** Registro de frases con autor, obra de origen, categoria e icono.
+  * **Leer:** Listado interactivo con filtrado por categoria (Videojuegos, Cine, Anime, Memes), busqueda en tiempo real y ordenamiento por votos, fecha o nombre.
+  * **Actualizar:** Edicion de todos los atributos de cada registro y sistema de votacion incremental reflejado en SQLite.
+  * **Eliminar:** Borrado de registros con solicitud de confirmacion.
+* **Salon de la Fama:** Seccion superior que presenta en tiempo real las tres frases con mayor puntuacion.
+* **Restauracion de Datos:** Opcion para restablecer la base de datos a sus registros semilla originales.
+* **Diseno Adaptativo:** Interfaz inspirada en terminales arcade, desarrollada con CSS moderno y compatible con dispositivos moviles y pantallas de escritorio.
 
 ---
 
-## 📂 Estructura del Proyecto
+## Tecnologias Utilizadas
 
-El proyecto sigue estrictamente el patrón de arquitectura Modelo-Vista-Controlador (MVC):
+* **Vite 6:** Empaquetador y servidor de desarrollo.
+* **TypeScript 5:** Lenguaje con tipado estatico y estructuracion modular.
+* **SQL.js (WebAssembly):** Compilacion de SQLite para ejecucion nativa en el navegador cliente.
+* **CSS3:** Diseno modular, variables de color y animaciones.
+* **pnpm:** Gestor de paquetes y dependencias del proyecto.
+* **Vercel:** Plataforma de despliegue continuo vinculada al repositorio de GitHub.
+
+---
+
+## Estructura del Proyecto
+
+El codigo se organiza bajo el patron arquitectonico Modelo-Vista-Controlador (MVC):
 
 ```text
 arcade-de-frases-epicas/
-├── index.html                   # Punto de entrada HTML y montaje del DOM
-├── package.json                 # Dependencias, scripts y configuración
-├── pnpm-lock.yaml               # Bloqueo de dependencias de pnpm
-├── vite.config.ts               # Configuración de Vite y exclusión de WASM
-├── tsconfig.json                # Configuración de TypeScript
-├── README.md                    # Documentación y guía del proyecto
-├── .gitignore                   # Archivos ignorados por Git
+├── index.html                   # Punto de entrada HTML
+├── package.json                 # Configuracion de dependencias y scripts
+├── pnpm-lock.yaml               # Archivo de bloqueo de dependencias de pnpm
+├── pnpm-workspace.yaml          # Configuracion de politicas de construccion de pnpm
+├── vite.config.ts               # Configuracion de Vite
+├── tsconfig.json                # Opciones del compilador de TypeScript
+├── README.md                    # Documentacion del proyecto
+├── .gitignore                   # Exclusion de archivos de control de versiones
 ├── public/
-│   └── sql-wasm.wasm            # Binario WebAssembly de SQLite
+│   ├── sql-wasm.wasm            # Binario WebAssembly estandar de SQLite
+│   └── sql-wasm-browser.wasm    # Binario WebAssembly para navegador
 └── src/
-    ├── main.ts                  # Inicialización y arranque de la aplicación
+    ├── main.ts                  # Punto de arranque de la aplicacion
     ├── db/
-    │   └── database.ts          # Conexión SQLite, persistencia en localStorage y semillas
+    │   └── database.ts          # Inicializacion SQLite, persistencia y semillas
     ├── models/
-    │   └── frase.ts             # Modelo de datos y sentencias SQL (CRUD)
+    │   └── frase.ts             # Modelo de entidad Frase y operaciones SQL
     ├── views/
-    │   └── fraseView.ts         # Interfaz de usuario, modales, podio y notificaciones
+    │   └── fraseView.ts         # Generacion de la interfaz de usuario y modales
     ├── controllers/
-    │   └── fraseController.ts   # Coordinación de eventos, búsqueda y flujo de datos
+    │   └── fraseController.ts   # Coordinacion de eventos y comunicacion modelo-vista
     └── styles/
-        └── styles.css           # Estilos temáticos Retro Arcade Neon
+        └── styles.css           # Estilos visuales del proyecto
 ```
 
 ---
 
-## 🗄️ Esquema de la Base de Datos SQLite
+## Esquema de la Base de Datos SQLite
 
 ```sql
 CREATE TABLE IF NOT EXISTS frases (
@@ -86,20 +88,21 @@ CREATE TABLE IF NOT EXISTS frases (
   origen TEXT NOT NULL,
   categoria TEXT NOT NULL,
   votos INTEGER NOT NULL DEFAULT 0,
-  icono TEXT NOT NULL DEFAULT '👾',
+  icono TEXT NOT NULL DEFAULT 'arcade',
   fecha TEXT NOT NULL
 );
 ```
 
 ---
 
-## 🚀 Cómo Ejecutar el Proyecto Localmente
+## Ejecucion Local
 
-### Prerrequisitos
-* **Node.js** (versión 18 o superior recomendada).
-* **pnpm** instalado globalmente (`npm install -g pnpm`).
+### Requisitos Previos
 
-### Pasos
+* Node.js v18 o superior instalado.
+* pnpm instalado de forma global (`npm install -g pnpm`).
+
+### Instrucciones
 
 1. **Clonar el repositorio:**
    ```bash
@@ -107,7 +110,7 @@ CREATE TABLE IF NOT EXISTS frases (
    cd Arcade-de-Frases-picas
    ```
 
-2. **Instalar dependencias con pnpm:**
+2. **Instalar dependencias:**
    ```bash
    pnpm install
    ```
@@ -116,32 +119,31 @@ CREATE TABLE IF NOT EXISTS frases (
    ```bash
    pnpm run dev
    ```
-   Abre [http://localhost:5173](http://localhost:5173) en tu navegador para ver la aplicación funcionando.
 
-4. **Compilar para producción:**
+4. **Compilar el proyecto para produccion:**
    ```bash
    pnpm run build
    ```
 
-5. **Previsualizar la compilación de producción:**
+5. **Previsualizar la compilacion:**
    ```bash
    pnpm run preview
    ```
 
 ---
 
-## ☁️ Despliegue en Vercel
+## Despliegue en Vercel
 
-1. Importar el repositorio desde el panel de [Vercel](https://vercel.com/new).
-2. Framework Preset: **Vite**.
-3. Build Command: `pnpm run build` (o `vite build`).
-4. Output Directory: `dist`.
-5. Hacer clic en **Deploy**. Al ser una aplicación estricta de cliente con WebAssembly y SQLite en localStorage, el despliegue es instantáneo, 100% estable y sin problemas de lectura de archivos en entornos serverless.
+1. Acceder al panel de Vercel e importar el repositorio publico `Arcade-de-Frases-picas`.
+2. Seleccionar el ajuste predeterminado de Vite (`Vite Framework Preset`).
+3. Comando de construccion: `pnpm run build`.
+4. Directorio de salida: `dist`.
+5. Ejecutar el despliegue.
 
 ---
 
-## 👨‍💻 Autor
+## Informacion Academica
 
 * **Estudiante:** Jonathan De la O
-* **Materia:** Programación Orientada a Eventos
+* **Materia:** Programacion Orientada a Eventos
 * **Actividad:** Laboratorio 3 - SQLite, GitHub y Vercel
