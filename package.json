@@ -1,0 +1,19 @@
+{
+  "name": "arcade-de-frases-epicas",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "sql.js": "^1.16.0"
+  },
+  "devDependencies": {
+    "@types/sql.js": "^1.4.11",
+    "typescript": "^5.7.2",
+    "vite": "^6.2.0"
+  }
+}
