@@ -32,6 +32,30 @@ function base64ToUint8Array(base64: string): Uint8Array {
 }
 
 /**
+ * Carga el binario WASM de forma segura con múltiples fuentes de respaldo
+ */
+async function loadWasmBinary(): Promise<ArrayBuffer | undefined> {
+  const sources = [
+    '/sql-wasm-browser.wasm',
+    '/sql-wasm.wasm',
+    'https://sql.js.org/dist/sql-wasm.wasm',
+    'https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.12.0/sql-wasm.wasm',
+  ];
+
+  for (const src of sources) {
+    try {
+      const resp = await fetch(src);
+      if (resp.ok) {
+        return await resp.arrayBuffer();
+      }
+    } catch {
+      // Continuar con siguiente fuente de respaldo
+    }
+  }
+  return undefined;
+}
+
+/**
  * Inicializa la base de datos SQLite con sql.js WebAssembly
  */
 export async function initDatabase(): Promise<Database> {
@@ -39,8 +63,11 @@ export async function initDatabase(): Promise<Database> {
     return dbInstance;
   }
 
+  const wasmBinary = await loadWasmBinary();
+
   const SQL = await initSqlJs({
     locateFile: (file) => `/${file}`,
+    ...(wasmBinary ? { wasmBinary } : {}),
   });
 
   const savedData = localStorage.getItem(STORAGE_KEY);
